@@ -1,6 +1,6 @@
 # SaasCustomerDeploy
 
-Create a SaaS Azure Customer Deployment - <a href="https://azuredeploy.net/?repository=https://github.com/djpericsson/SaasCustomerDeploy" target="_blank">
+<a href="https://azuredeploy.net/?repository=https://github.com/djpericsson/SaasCustomerDeploy" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
 
