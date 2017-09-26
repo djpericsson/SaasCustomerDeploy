@@ -4,5 +4,5 @@
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
 
-<br>
+
 This template creates a Saas customer deployment.
