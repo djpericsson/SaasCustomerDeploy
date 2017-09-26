@@ -4,6 +4,4 @@
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
 
-This template creates a Standard Storage account. For more information, see here:
-
-http://azure.microsoft.com/en-us/documentation/articles/storage-create-storage-account/
+This template creates a Saas customer deployment.
