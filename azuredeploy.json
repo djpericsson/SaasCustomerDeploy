@@ -21,31 +21,11 @@
       "metadata": {
         "description": "The customer name"
       }
-    },
-    "SaaSResourceGroup": {
-      "type": "string",
-      "minLength": 1,
-      "defaultValue": "SignUp-SAAS-Services",
-      "metadata": {
-        "description": "The SaaS Service Resoure Group"
-      }
-    },
-    "ResourceGroup": {
-      "type": "string",
-      "minLength": 1,
-      "defaultValue": "SignUp-xfw-prod-rg",
-      "allowedValues": [
-        "SignUp-xfw-prod-rg"
-      ],
-      "metadata": {
-        "description": "The Customer Resoure Group"
-      }
     }
   },
   "variables": {
     "StorageAccountName": "[tolower(parameters('CustomerName'))]",
-    "DNSZoneName": "[tolower(concat(parameters('ResourceGroup'), '.dev.addlevel.net'))]",
-    "SaaSResourceGroup": "[parameters('SaaSResourceGroup')]"
+    "DNSZoneName": "[tolower(concat(resourceGroup().name, '.dev.addlevel.net'))]"
   },
   "resources": [
     {
