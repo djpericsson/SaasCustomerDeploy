@@ -62,8 +62,7 @@
                     "name": "[concat(variables('DNSZoneName'), '/', parameters('CustomerName'))]",
                     "apiVersion": "2016-04-01",
                     "location": "global",
-                    "dependsOn": [
-                    ],
+                    "dependsOn": [],
                     "tags": {
                       "displayName": "DnsRecordSet"
                     },
