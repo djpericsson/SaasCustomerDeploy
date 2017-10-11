@@ -17,6 +17,7 @@
       "type": "string",
       "minLength": 1,
       "maxLength": 24,
+      "defaultValue": "SignUp-xfw-prod-rg",
       "metadata": {
         "description": "The customer name"
       }
@@ -24,6 +25,7 @@
     "SaaSResourceGroup": {
       "type": "string",
       "minLength": 1,
+      "defaultValue": "SignUp-SAAS-Services",
       "metadata": {
         "description": "The SaaS Service Resoure Group"
       }
