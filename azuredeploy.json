@@ -52,11 +52,11 @@
     },    
     {
       "type": "Microsoft.Network/dnszones/CNAME",
-      "name": "[concat(variables('DNSZoneName'), '/', tolower(parameters('CustomerName')))]",
+      "name": "[concat(variables('DNSZoneName'), concat('/', parameters('CustomerName')))]",
       "apiVersion": "2016-04-01",
       "location": "global",
       "dependsOn": [
-        "[variables('DNSZoneName')]"
+        "[concat('Microsoft.Network/dnszones/', variables('DNSZoneName'))]"
       ],
       "tags": {
         "displayName": "DnsRecordSet"
