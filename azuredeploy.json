@@ -52,7 +52,7 @@
     },    
     {
       "type": "Microsoft.Network/dnszones/CNAME",
-      "name": "[concat(variables('DNSZoneName'), concat('/', parameters('CustomerName')))]",
+      "name": "[concat(variables('DNSZoneName'), '/', parameters('CustomerName'))]",
       "apiVersion": "2016-04-01",
       "location": "global",
       "dependsOn": [
@@ -64,9 +64,15 @@
       "properties": {
         "TTL": 3600,
         "CNAMERecord": {
-          "cname": "[tolower(concat(parameters('CustomerName'), '.', variables('DNSZoneName')))]"
+          "cname": "[concat(parameters('CustomerName'), '.', variables('DNSZoneName'))]"
         }
       }
     }
-  ]
+  ],
+  "outputs": {
+    "DNS": {
+      "type": "string",
+      "value": "[concat(parameters('CustomerName'), '.', variables('DNSZoneName'))]"
+    } 
+  }
 }
