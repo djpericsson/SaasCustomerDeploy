@@ -43,22 +43,13 @@
         "Solution": "Exflow"
       },
       "kind": "Storage"
-    },
-    {
-      "type": "Microsoft.Network/dnszones",
-      "name": "signup-xfw-prod-rg.dev.addlevel.net",
-      "apiVersion": "2015-05-04-preview",
-      "location": "global",
-      "properties": {}
-    },    
+    },   
     {
       "type": "Microsoft.Network/dnszones/CNAME",
       "name": "[concat(variables('DNSZoneName'), '/', tolower(parameters('CustomerName')))]",
       "apiVersion": "2016-04-01",
       "location": "global",
-      "dependsOn": [
-        "Microsoft.Network/dnszones/signup-xfw-prod-rg.dev.addlevel.net"
-      ],
+      "dependsOn": [],
       "tags": {
         "displayName": "DnsRecordSet"
       },
