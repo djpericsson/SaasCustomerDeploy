@@ -21,15 +21,18 @@
       "metadata": {
         "description": "The customer name"
       }
-    }
-  },
-  "variables": {
-    "StorageAccountName": "[tolower(parameters('CustomerName'))]",
-    "DNSZoneName": "signupsaasservices.dev.addlevel.net"
+    },
+    "DNSZoneName": {
+      "type": "string",
+      "defaultValue": "signupsaasservices.dev.addlevel.net",
+      "metadata": {
+        "description": "The name of the DNS zone to be created.  Must have at least 2 segements, e.g. hostname.org"
+      }
+    }    
   },
   "resources": [
     {
-      "name": "[variables('StorageAccountName')]",
+      "name": "[tolower(parameters('CustomerName'))]",
       "type": "Microsoft.Storage/storageAccounts",
       "location": "[resourceGroup().location]",
       "apiVersion": "2016-01-01",
@@ -45,8 +48,15 @@
       "kind": "Storage"
     },
     {
+      "type": "Microsoft.Network/dnszones",
+      "name": "[parameters('DNSZoneName')]",
+      "apiVersion": "2016-04-01",
+      "location": "global",
+      "properties": { }
+    },    
+    {
       "type": "Microsoft.Network/dnszones/CNAME",
-      "name": "[concat(variables('DNSZoneName'), '/', tolower(parameters('CustomerName')))]",
+      "name": "[concat(parameters('DNSZoneName'), '/', tolower(parameters('CustomerName')))]",
       "apiVersion": "2016-04-01",
       "location": "global",
       "dependsOn": [],
@@ -56,9 +66,15 @@
       "properties": {
         "TTL": 3600,
         "CNAMERecord": {
-          "cname": "[tolower(concat(parameters('CustomerName'), '.', 'signupsaasservices.dev.addlevel.net'))]"
+          "cname": "[tolower(concat(parameters('CustomerName'), '.', tolower(parameters('DNSZoneName'))))]"
         }
       }
     }
-  ]
+  ],
+  "outputs": {
+    "nameServers": {
+      "type": "array",
+      "value": "[reference(parameters('DNSZoneName')).nameServers]"
+    }
+  }
 }
