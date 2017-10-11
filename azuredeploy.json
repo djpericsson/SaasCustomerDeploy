@@ -45,7 +45,7 @@
     },  
     {
       "type": "Microsoft.Network/dnszones/CNAME",
-      "name": "[concat(variables('DNSZoneName'), '/', parameters('CustomerName'))]",
+      "name": "[concat(variables('DNSZoneName'), '/test', parameters('CustomerName'))]",
       "apiVersion": "2016-04-01",
       "location": "[resourceGroup().location]",
       "dependsOn": [
