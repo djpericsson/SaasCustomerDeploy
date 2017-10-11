@@ -24,7 +24,6 @@
     } 
   },
   "variables": {
-    "DNSZoneName": "signupsaasservices.dev.addlevel.net"
   },
   "resources": [
     {
@@ -45,7 +44,7 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "CustomScriptExtension",
+      "name": "MyCustomScriptExtension",
       "location": "[resourceGroup().location]",
       "apiVersion": "2015-06-15",
       "dependsOn": [
@@ -54,8 +53,8 @@
         "displayName": "CustomScriptExtension"
       },
       "properties": {
-        "publisher": "Microsoft.Azure.Extensions",
-        "type": "CustomScript",
+        "publisher": "Microsoft.Compute",
+        "type": "CustomScriptExtension",
         "typeHandlerVersion": "2.0",
         "autoUpgradeMinorVersion": true,
         "settings": {
