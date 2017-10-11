@@ -54,7 +54,10 @@
         "displayName": "DnsRecordSet"
       },
       "properties": {
-        "TTL": 3600
+        "TTL": 3600,
+        "CNAMERecord": {
+          "cname": "[parameters('CustomerName')]"
+        }
       }
     }
   ]
