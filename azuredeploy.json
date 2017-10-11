@@ -47,14 +47,14 @@
       "type": "Microsoft.Network/dnszones",
       "name": "[variables('DNSZoneName')]",
       "apiVersion": "2016-04-01",
-      "location": "global",
+      "location": "[resourceGroup().location]",
       "properties": { }
     },    
     {
       "type": "Microsoft.Network/dnszones/CNAME",
       "name": "[concat(variables('DNSZoneName'), '/', parameters('CustomerName'))]",
       "apiVersion": "2016-04-01",
-      "location": "global",
+      "location": "[resourceGroup().location]",
       "dependsOn": [
         "[concat('Microsoft.Network/dnszones/', variables('DNSZoneName'))]"
       ],
