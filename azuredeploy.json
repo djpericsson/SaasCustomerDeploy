@@ -45,7 +45,7 @@
       "kind": "Storage"
     },
     {
-      "type": "Microsoft.Network/dnszones/A",
+      "type": "Microsoft.Network/dnszones/CNAME",
       "name": "[concat(variables('DNSZoneName'), '/', tolower(parameters('CustomerName')))]",
       "apiVersion": "2016-04-01",
       "location": "global",
@@ -55,11 +55,9 @@
       },
       "properties": {
         "TTL": 3600,
-        "ARecords": [
-          {
-            "ipv4Address": "1.2.3.4"
-          }
-        ]
+        "CNAMERecord": {
+          "cname": "[tolower(concat(parameters('CustomerName'), '.', 'signupsaasservices.dev.addlevel.net'))]"
+        }
       }
     }
   ],
