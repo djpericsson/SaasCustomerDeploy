@@ -25,7 +25,7 @@
   },
   "variables": {
     "StorageAccountName": "[tolower(parameters('CustomerName'))]",
-    "DNSZoneName": "[tolower(concat(resourceGroup().name, '.signupsaasservices.dev.addlevel.net'))]"
+    "DNSZoneName": "signupsaasservices.dev.addlevel.net"
   },
   "resources": [
     {
@@ -43,7 +43,14 @@
         "Solution": "Exflow"
       },
       "kind": "Storage"
-    },   
+    },
+    {
+      "type": "Microsoft.Network/dnszones",
+      "name": "[variables('DNSZoneName')]",
+      "apiVersion": "2016-04-01",
+      "location": "global",
+      "properties": { }
+    },    
     {
       "type": "Microsoft.Network/dnszones/CNAME",
       "name": "[concat(variables('DNSZoneName'), '/', tolower(parameters('CustomerName')))]",
