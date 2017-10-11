@@ -64,7 +64,7 @@
       "properties": {
         "TTL": 3600,
         "CNAMERecord": {
-          "cname": "[concat(parameters('CustomerName'), '.', variables('DNSZoneName'))]"
+          "cname": "[concat('test.', parameters('CustomerName'), '.', variables('DNSZoneName'))]"
         }
       }
     }
