@@ -21,14 +21,10 @@
       "metadata": {
         "description": "The customer name"
       }
-    },
-    "DNSZoneName": {
-      "type": "string",
-      "defaultValue": "signupsaasservices.dev.addlevel.net",
-      "metadata": {
-        "description": "The name of the DNS zone to be created.  Must have at least 2 segements, e.g. hostname.org"
-      }
-    }    
+    } 
+  },
+  "variables": {
+    "DNSZoneName": "signupsaasservices.dev.addlevel.net"
   },
   "resources": [
     {
@@ -49,32 +45,28 @@
     },
     {
       "type": "Microsoft.Network/dnszones",
-      "name": "[parameters('DNSZoneName')]",
+      "name": "[variables('DNSZoneName')]",
       "apiVersion": "2016-04-01",
       "location": "global",
       "properties": { }
     },    
     {
       "type": "Microsoft.Network/dnszones/CNAME",
-      "name": "[concat(parameters('DNSZoneName'), '/', tolower(parameters('CustomerName')))]",
+      "name": "[concat(variables('DNSZoneName'), '/', tolower(parameters('CustomerName')))]",
       "apiVersion": "2016-04-01",
       "location": "global",
-      "dependsOn": [],
+      "dependsOn": [
+        "[variables('DNSZoneName')]"
+      ],
       "tags": {
         "displayName": "DnsRecordSet"
       },
       "properties": {
         "TTL": 3600,
         "CNAMERecord": {
-          "cname": "[tolower(concat(parameters('CustomerName'), '.', tolower(parameters('DNSZoneName'))))]"
+          "cname": "[tolower(concat(parameters('CustomerName'), '.', variables('DNSZoneName')))]"
         }
       }
     }
-  ],
-  "outputs": {
-    "nameServers": {
-      "type": "array",
-      "value": "[reference(parameters('DNSZoneName')).nameServers]"
-    }
-  }
+  ]
 }
