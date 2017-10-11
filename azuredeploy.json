@@ -20,11 +20,19 @@
       "metadata": {
         "description": "The customer name"
       }
+    },
+    "SaaSResourceGroup": {
+      "type": "string",
+      "minLength": 1,
+      "metadata": {
+        "description": "The SaaS Service Resoure Group"
+      }
     }
   },
   "variables": {
     "StorageAccountName": "[tolower(parameters('CustomerName'))]",
-    "DNSZoneName": "[tolower(concat(resourceGroup().name, '.dev.addlevel.net'))]"
+    "DNSZoneName": "[tolower(concat(resourceGroup().name, '.dev.addlevel.net'))]",
+    "SaaSResourceGroup": "[parameters('SaaSResourceGroup')]"
   },
   "resources": [
     {
@@ -69,7 +77,7 @@
     },
     "DnsRecordSet": {
       "type": "string",
-      "value": "[tolower(concat(parameters('CustomerName'), '.', resourceGroup().name, '.dev.addlevel.net'))]"
+      "value": "[tolower(concat(parameters('CustomerName'), '.', variables('SaaSResourceGroup'), '.dev.addlevel.net'))]"
     }
   }
 }

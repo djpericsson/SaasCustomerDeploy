@@ -7,6 +7,9 @@
     },
     "CustomerName": {
       "value": ""
-    }
+    },
+    "SaaSResourceGroup": {
+      "value": "SignUp-SAAS-Services"
+    }    
   }
 }
