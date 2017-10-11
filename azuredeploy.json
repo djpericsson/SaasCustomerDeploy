@@ -45,13 +45,6 @@
       "kind": "Storage"
     },
     {
-      "type": "Microsoft.Network/dnszones",
-      "name": "[variables('DNSZoneName')]",
-      "apiVersion": "2016-04-01",
-      "location": "global",
-      "properties": {}
-    },
-    {
       "type": "Microsoft.Network/dnszones/CNAME",
       "name": "[concat(variables('DNSZoneName'), '/', tolower(parameters('CustomerName')))]",
       "apiVersion": "2016-04-01",
@@ -67,15 +60,5 @@
         }
       }
     }
-  ],
-  "outputs": {
-    "StorageAccountName": {
-      "type": "string",
-      "value": "[parameters('CustomerName')]"
-    },
-    "DnsRecordSet": {
-      "type": "string",
-      "value": "[tolower(concat(parameters('CustomerName'), '.', 'signupsaasservices.dev.addlevel.net'))]"
-    }
-  }
+  ]
 }
