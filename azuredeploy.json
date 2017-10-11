@@ -90,7 +90,7 @@
     },
     "DnsRecordSet": {
       "type": "string",
-      "value": "[tolower(concat(parameters('CustomerName'), '.', variables('SaaSResourceGroup'), '.dev.addlevel.net'))]"
+      "value": "[tolower(concat(parameters('CustomerName'), '.', 'signupsaasservices.dev.addlevel.net'))]"
     }
   }
 }
