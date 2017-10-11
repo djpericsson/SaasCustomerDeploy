@@ -24,6 +24,8 @@
     } 
   },
   "variables": {
+    "DNSZoneName": "signupsaasservices.dev.addlevel.net",
+    "SaaSResourceGroup": "SignUp-SAAS-Services"
   },
   "resources": [
     {
@@ -43,26 +45,38 @@
       "kind": "Storage"
     },
     {
-      "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "MyCustomScriptExtension",
-      "location": "[resourceGroup().location]",
-      "apiVersion": "2015-06-15",
-      "dependsOn": [
-      ],
-      "tags": {
-        "displayName": "CustomScriptExtension"
-      },
+      "apiVersion": "2017-05-10",
+      "name": "nestedTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "resourceGroup": "crossResourceGroupDeployment",
       "properties": {
-        "publisher": "Microsoft.Compute",
-        "type": "CustomScriptExtension",
-        "typeHandlerVersion": "2.0",
-        "autoUpgradeMinorVersion": true,
-        "settings": {
-          "fileUris": [
-            "https://raw.githubusercontent.com/djpericsson/SaasCustomerDeploy/master/Create-DnsCnameRecord.ps1"
-          ],
-          "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File Create-DnsCnameRecord.ps1"
-        }
+          "mode": "Incremental",
+          "template": {
+              "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+              "contentVersion": "1.0.0.0",
+              "parameters": {},
+              "variables": {},
+              "resources": [   
+                  {
+                    "type": "Microsoft.Network/dnszones/CNAME",
+                    "name": "[concat(variables('DNSZoneName'), '/', parameters('CustomerName'))]",
+                    "apiVersion": "2016-04-01",
+                    "location": "global",
+                    "dependsOn": [
+                    ],
+                    "tags": {
+                      "displayName": "DnsRecordSet"
+                    },
+                    "properties": {
+                      "TTL": 3600,
+                      "CNAMERecord": {
+                        "cname": "[concat(parameters('CustomerName'), '.azurewebsites.net')]"
+                      }
+                    }
+                  }
+              ]
+          },
+          "parameters": {}
       }
     }
   ]
