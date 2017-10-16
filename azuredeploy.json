@@ -33,10 +33,10 @@
       "kind": "Storage"
     },
     { 
-      "apiVersion": "2015-01-01", 
+      "apiVersion": "2017-05-10", 
       "name": "nestedTemplate", 
       "type": "Microsoft.Resources/deployments",
-      "ResourceGroup": "SignUp-SAAS-Services",
+      "resourceGroup": "SignUp-SAAS-Services",
       "properties": { 
         "mode": "Incremental", 
         "templateLink": {
