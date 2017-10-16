@@ -43,8 +43,7 @@
            "contentVersion":"1.0.0.0"
         }, 
         "parameters": { 
-           "CustomerName":{"value": "[parameters('CustomerName')]"},
-           "ResourceGroupName" : { "value" : "SignUp-SAAS-Services" },
+           "CustomerName":{"value": "[parameters('CustomerName')]"}
         } 
       } 
    }
