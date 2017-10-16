@@ -36,7 +36,6 @@
       "apiVersion": "2017-05-10", 
       "name": "nestedTemplate", 
       "type": "Microsoft.Resources/deployments",
-      "resourceGroup": "SignUp-SAAS-Services",
       "properties": { 
         "mode": "Incremental", 
         "templateLink": {
