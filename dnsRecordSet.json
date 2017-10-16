@@ -14,7 +14,7 @@
       "type": "Microsoft.Network/dnszones/CNAME",
       "name": "[concat(variables('DNSZoneName'), '/', parameters('CustomerName'))]",
       "apiVersion": "2016-04-01",
-      "location": "global",
+      "location": "[resourceGroup().location]",
       "dependsOn": [],
       "tags": {
         "displayName": "DnsRecordSet"
