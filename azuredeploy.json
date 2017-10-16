@@ -8,7 +8,7 @@
       "maxLength": 24,
       "defaultValue": "",
       "metadata": {
-        "description": "The customer name"
+        "description": "The customer name. Only A to Z characters and numbers are valid."
       }
     } 
   },
