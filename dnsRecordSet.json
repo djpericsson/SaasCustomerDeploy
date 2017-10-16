@@ -13,7 +13,6 @@
     {
       "type": "Microsoft.Network/dnszones/CNAME",
       "name": "[concat(variables('DNSZoneName'), '/', parameters('CustomerName'))]",
-      "resourceGroup": "SignUp-SAAS-Services",
       "apiVersion": "2016-04-01",
       "location": "global",
       "dependsOn": [],
