@@ -2,17 +2,6 @@
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "StorageAccountType": {
-      "type": "string",
-      "defaultValue": "Standard_LRS",
-      "allowedValues": [
-        "Standard_LRS",
-        "Standard_ZRS",
-        "Standard_GRS",
-        "Standard_RAGRS",
-        "Premium_LRS"
-      ]
-    },
     "CustomerName": {
       "type": "string",
       "minLength": 1,
@@ -23,6 +12,9 @@
       }
     } 
   },
+  "variables": {
+    "StorageAccountType": "Standard_LRS"
+  },   
   "resources": [
     {
       "name": "[tolower(parameters('CustomerName'))]",
@@ -30,7 +22,7 @@
       "location": "[resourceGroup().location]",
       "apiVersion": "2016-01-01",
       "sku": {
-        "name": "[parameters('StorageAccountType')]"
+        "name": "[variables('StorageAccountType')]"
       },
       "dependsOn": [],
       "tags": {
@@ -50,8 +42,8 @@
            "uri":"https://raw.githubusercontent.com/djpericsson/SaasCustomerDeploy/master/dnsRecordSet.json",
            "contentVersion":"1.0.0.0"
         }, 
-        "parameters": { 
-           "CustomerName":{"value": "[parameters('CustomerName')]"} 
+        "parameters": {
+          "CustomerName" : { "value" : "[parameters('CustomerName')]" }
         } 
       } 
    }

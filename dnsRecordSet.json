@@ -3,13 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "CustomerName": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 24,
-      "defaultValue": "",
-      "metadata": {
-        "description": "The customer name"
-      }
+      "type": "string"
     } 
   },
   "variables": {
