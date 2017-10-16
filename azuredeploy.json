@@ -6,11 +6,11 @@
       "type": "string",
       "minLength": 1,
       "maxLength": 24,
-      "defaultValue": "[resourceGroup().id]",
+      "defaultValue": "resourceGroup().id",
       "metadata": {
         "description": "The customer name. Only A to Z characters and numbers are valid."
       }
-    },
+    }
   },
   "variables": {
     "StorageAccountType": "Standard_LRS"
