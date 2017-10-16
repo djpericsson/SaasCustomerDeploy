@@ -6,11 +6,18 @@
       "type": "string",
       "minLength": 1,
       "maxLength": 24,
-      "defaultValue": "resourceGroup().id",
+      "defaultValue": "",
       "metadata": {
         "description": "The customer name. Only A to Z characters and numbers are valid."
       }
-    }
+    },
+    "SaaSResoureGroup": {
+      "type": "string",
+      "defaultValue": "SignUp-SAAS-Services",
+      "metadata": {
+        "description": "The SaaS Service Resource Group name. Only A to Z characters and numbers are valid."
+      }     
+    }    
   },
   "variables": {
     "StorageAccountType": "Standard_LRS"
