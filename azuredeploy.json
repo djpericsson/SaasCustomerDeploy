@@ -24,8 +24,7 @@
     } 
   },
   "variables": {
-    "DNSZoneName": "signupsaasservices.dev.addlevel.net",
-    "SaaSResourceGroup": "SignUp-SAAS-Services"
+    "DNSZoneName": "signupsaasservices.dev.addlevel.net"
   },
   "resources": [
     {
