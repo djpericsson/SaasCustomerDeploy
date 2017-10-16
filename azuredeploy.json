@@ -14,7 +14,7 @@
   },
   "variables": {
     "StorageAccountType": "Standard_LRS",
-    "ResourceGroupName": "SignUp-SAAS-Services"
+    "ResourceGroup": "SignUp-SAAS-Services"
   },   
   "resources": [
     {
@@ -45,7 +45,7 @@
         }, 
         "parameters": { 
            "CustomerName":{"value": "[parameters('CustomerName')]"},
-           "ResourceGroupName":{"value": "[variables('ResourceGroupName')]"}
+           "ResourceGroup":{"value": "[variables('ResourceGroup')]"}
         } 
       } 
    }
