@@ -13,8 +13,7 @@
     } 
   },
   "variables": {
-    "StorageAccountType": "Standard_LRS",
-    "ResourceGroup": "SignUp-SAAS-Services"
+    "StorageAccountType": "Standard_LRS"
   },   
   "resources": [
     {
