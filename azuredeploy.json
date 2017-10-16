@@ -51,7 +51,7 @@
            "contentVersion":"1.0.0.0"
         }, 
         "parameters": { 
-           "StorageAccountName":{"value": "[parameters('CustomerName')]"} 
+           "CustomerName":{"value": "[parameters('CustomerName')]"} 
         } 
       } 
    }
