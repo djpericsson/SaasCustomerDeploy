@@ -33,7 +33,7 @@
       "kind": "Storage"
     },
     { 
-      "apiVersion": "2017-05-10", 
+      "apiVersion": "2015-01-01", 
       "name": "nestedTemplate", 
       "type": "Microsoft.Resources/deployments",
       "properties": { 
