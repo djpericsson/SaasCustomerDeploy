@@ -50,9 +50,8 @@
            "uri":"https://raw.githubusercontent.com/djpericsson/SaasCustomerDeploy/master/dnsRecordSet.json",
            "contentVersion":"1.0.0.0"
         }, 
-        "parametersLink": { 
-           "uri":"https://raw.githubusercontent.com/djpericsson/SaasCustomerDeploy/master/dnsRecordSet.parameters.json",
-           "contentVersion":"1.0.0.0"
+        "parameters": { 
+           "StorageAccountName":{"value": "[parameters('CustomerName')]"} 
         } 
       } 
    }
