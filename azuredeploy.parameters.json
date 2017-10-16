@@ -4,9 +4,6 @@
   "parameters": {
     "CustomerName": {
       "value": ""
-    },
-    "SaaSResoureGroup": {
-      "value": "SignUp-SAAS-Services"
-    }      
+    }    
   }
 }
