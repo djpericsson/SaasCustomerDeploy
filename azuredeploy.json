@@ -35,16 +35,16 @@
     { 
       "apiVersion": "2015-01-01", 
       "name": "nestedTemplate", 
-      "type": "Microsoft.Resources/deployments",
+      "type": "Microsoft.Resources/deployments", 
       "properties": { 
         "mode": "Incremental", 
         "templateLink": {
            "uri":"https://raw.githubusercontent.com/djpericsson/SaasCustomerDeploy/master/dnsRecordSet.json",
            "contentVersion":"1.0.0.0"
         }, 
-        "parameters": {
-          "ResourceGroupName" : { "value" : "SignUp-SAAS-Services" },
-          "CustomerName" : { "value" : "[parameters('CustomerName')]" }
+        "parameters": { 
+           "CustomerName":{"value": "[parameters('CustomerName')]"},
+           "ResourceGroupName" : { "value" : "SignUp-SAAS-Services" },
         } 
       } 
    }
