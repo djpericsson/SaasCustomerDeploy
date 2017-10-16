@@ -44,8 +44,8 @@
       "kind": "Storage"
     },
     {
-      "apiVersion": "2017-05-10",
-      "name": "nestedTemplate",
+      "apiVersion": "2016-02-01",
+      "name": "dnsRecordSet",
       "type": "Microsoft.Resources/deployments",
       "resourceGroup": "SignUp-SAAS-Services",
       "properties": {
