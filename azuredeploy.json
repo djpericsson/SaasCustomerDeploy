@@ -31,9 +31,7 @@
     "variables": {
         "StorageAccountType": "Standard_LRS",
         "CustomerName": "[substring(concat(replace(trim(parameters('CustomerName')),' ', ''), uniqueString(parameters('CustomerName'))), 0, 19)]",
-        "ResourceGroup": "[resourceGroup().name]",
-        "NameLength": "[less(parameters(substring(concat(replace(trim(parameters('CustomerName')),' ', ''), uniqueString(parameters('CustomerName'))), 0, 19)), 19 )]"
-        // "availabilitySet": "[if(equals(variables('NameLength'), 'Yes'), concat(replace(trim(parameters('CustomerName')),' ', ''), uniqueString(parameters('CustomerName'))), substring(concat(replace(trim(parameters('CustomerName')),' ', ''), uniqueString(parameters('CustomerName'))), 0, 19))]"
+        "ResourceGroup": "[resourceGroup().name]"
     },
     "resources": [
         {
