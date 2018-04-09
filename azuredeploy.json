@@ -17,6 +17,11 @@
             "metadata": {
                 "description": "The Saas Service Resource Group name."
             }
+        },
+        "sku": {
+            "type": "string",
+            "allowedValues": ["Free", "Shared", "Basic", "Standard"],
+            "defaultValue": "Free"
         }
     },
     "variables": {
