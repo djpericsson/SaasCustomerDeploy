@@ -28,6 +28,15 @@
         "type": "Microsoft.Storage/storageAccounts",
         "location": "[resourceGroup().location]",
         "apiVersion": "2016-01-01",
+        "properties": {
+          "accountType": "[parameters('StorageAccountType')]",
+          "cors": {
+            "allowedHeaders": [ "x-ms-meta-abc,Content-Encoding,Content-Range,Accept-Ranges,x-ms-meta-data*,x-ms-meta-target*" ],
+            "allowedMethods": [ "get" ],
+            "allowedOrigins": [ "http://signup.exflow.debug,https://signup.exflow.cloud" ],
+            "exposedHeaders": [ "Accept-Ranges,Content-Range,Content-Encoding,Content-Length,Content-Type" ],
+            "maximumAge": 0
+          },        
         "sku": {
             "name": "[parameters('StorageAccountType')]"
         },
