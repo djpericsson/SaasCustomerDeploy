@@ -14,12 +14,13 @@
   },
   "variables": {
     "StorageAccountType": "Standard_LRS",
-    "VariableName": "[concat(parameters('CustomerName'), uniqueString(resourceGroup().id))]",
-    "CustomerName": "[substring(variables('VariableName'), 0, 19)]"
+    "TrimName": "[trim(parameters('CustomerName'))]",
+    "ConcatName": "[concat(variables('TrimName'), uniqueString(resourceGroup().id))]",
+    "CustomerName": "[substring(variables('ConcatName'), 0, 19)]"
   },   
   "resources": [
     {
-      "name": "[tolower(parameters('CustomerName'))]",
+      "name": "[tolower(variables('CustomerName'))]",
       "type": "Microsoft.Storage/storageAccounts",
       "location": "[resourceGroup().location]",
       "apiVersion": "2016-01-01",
