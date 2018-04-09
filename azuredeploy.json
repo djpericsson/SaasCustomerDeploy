@@ -25,7 +25,7 @@
         },
         "AppServicePlan": {
             "type": "string",
-            "defaultValue": "[uniqueString('signupxfwprodrg')]"
+            "defaultValue": "uniqueString(parameters('CustomerName')))"
         }       
     },
     "variables": {
