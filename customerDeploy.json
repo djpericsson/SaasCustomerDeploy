@@ -31,6 +31,17 @@
         "sku": {
             "name": "[parameters('StorageAccountType')]"
         },
+        "properties": {
+          "accountType": "[parameters('StorageAccountType')]",
+          "cors": {
+            "allowedHeaders": [ "*" ],
+            "allowedMethods": [ "get", "post", "put" ],
+            "allowedOrigins": [ "*" ],
+            "exposedHeaders": [ "*" ],
+            "maximumAge": 5
+          },
+          "val": "123"
+        },        
         "dependsOn": [],
         "tags": {
             "displayName": "StorageAccount",
