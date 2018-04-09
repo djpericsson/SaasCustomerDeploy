@@ -31,6 +31,9 @@
     "variables": {
         "StorageAccountType": "Standard_LRS",
         "CustomerName": "[substring(concat(replace(trim(parameters('CustomerName')),' ', ''), uniqueString(parameters('CustomerName'))), 0, 19)]",
+        // "ReplaceName": "[replace(variables('TrimName'),' ', '')]",
+        // "ConcatName": "[concat(variables('ReplaceName'), uniqueString(parameters('CustomerName')))]",
+        // "CustomerName": "[substring(variables('ConcatName'), 0, 19)]",
         "ResourceGroup": "[resourceGroup().name]"
     },
     "resources": [
