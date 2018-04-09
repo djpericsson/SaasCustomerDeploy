@@ -22,7 +22,11 @@
             "type": "string",
             "allowedValues": ["Free", "Shared", "Basic", "Standard"],
             "defaultValue": "Free"
-        }
+        },
+        "AppServicePlan": {
+            "type": "string",
+            "defaultValue": "uniqueString(signupxfwprodrg)"
+        }       
     },
     "variables": {
         "StorageAccountType": "Standard_LRS",

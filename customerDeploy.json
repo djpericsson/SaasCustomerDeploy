@@ -12,6 +12,14 @@
         "type": "string"
       } 
     },
+    "variables": {
+        "ReplaceName": "[replace(parameters('CustomerName'),' ', '')]",
+        "CustomerName": "[replace(variables('ReplaceName'),'-', '')]",
+        "Rg": "[resourceGroup().name]",
+        "rRgSpace": "[replace(variables('Rg'),' ', '')]",
+        "rRgDash": "[replace(variables('rRgSpace'),'-', '')]",
+        "AppServicePlanName": "[tolower(variables('rRgDash'))]"
+    },
     "resources": [
       {
         "name": "[tolower(parameters('CustomerName'))]",
