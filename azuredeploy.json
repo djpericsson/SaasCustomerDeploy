@@ -10,7 +10,11 @@
             "metadata": {
                 "description": "The customer name. Only A to Z characters and numbers are valid."
             }
-        }
+        },
+        "ResourceGroup": {
+          "type": "string",
+          "defaultValue": "SignUp-SAAS-Services"
+      },        
     },
     "variables": {
         "StorageAccountType": "Standard_LRS",
@@ -31,7 +35,7 @@
             "dependsOn": [],
             "tags": {
                 "displayName": "StorageAccount",
-                "Customer": "[variables('CustomerName')]",
+                "Customer": "[parameters('CustomerName')]",
                 "Solution": "Exflow"
             },
             "kind": "Storage"
@@ -48,15 +52,9 @@
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
-                    "CustomerName": { "value": "[variables('CustomerName')]" }
+                    "CustomerName": { "value": "[variables('ReplaceName')]" }
                 }
             }
         }
-    ],
-    "outputs": {
-        "return": {
-            "type": "string",
-            "value": "[trim(parameters('CustomerName'))]"
-        }
-    }
+    ]
 }
