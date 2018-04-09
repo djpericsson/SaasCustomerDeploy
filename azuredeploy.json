@@ -11,13 +11,20 @@
                 "description": "The customer name. Only A to Z characters and numbers are valid."
             }
         },
+        "SaaSResourceGroup": {
+            "type": "string",
+            "defaultValue": "SignUp-SAAS-Services",
+            "metadata": {
+                "description": "The Saas Service Resource Group name."
+            }
+        },
         "ResourceGroup": {
-          "type": "string",
-          "defaultValue": "SignUp-SAAS-Services",
-          "metadata": {
-            "description": "The Saas Service Resource Group name."
-        }                 
-      }       
+            "type": "string",
+            "defaultValue": "SignUp-xfw-prod-rg",
+            "metadata": {
+                "description": "The Customer Resource Group name."
+            }
+        }
     },
     "variables": {
         "StorageAccountType": "Standard_LRS",
@@ -28,26 +35,27 @@
     },
     "resources": [
         {
-            "name": "[tolower(variables('CustomerName'))]",
-            "type": "Microsoft.Storage/storageAccounts",
-            "location": "[resourceGroup().location]",
-            "apiVersion": "2016-01-01",
-            "sku": {
-                "name": "[variables('StorageAccountType')]"
-            },
-            "dependsOn": [],
-            "tags": {
-                "displayName": "StorageAccount",
-                "Customer": "[parameters('CustomerName')]",
-                "Solution": "Exflow"
-            },
-            "kind": "Storage"
+            "apiVersion": "2017-05-10",
+            "name": "nestedTemplate",
+            "type": "Microsoft.Resources/deployments",
+            "resourceGroup": "[parameters('ResourceGroup')]",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "https://raw.githubusercontent.com/djpericsson/SaasCustomerDeploy/master/customerDeploy.json",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "CustomerName": { "value": "[variables('ReplaceName')]" },
+                    "StorageAccountType": { "value": "[variables('StorageAccountType')]" }
+                }
+            }
         },
         {
             "apiVersion": "2017-05-10",
             "name": "nestedTemplate",
             "type": "Microsoft.Resources/deployments",
-            "resourceGroup": "[parameters('ResourceGroup')]",
+            "resourceGroup": "[parameters('SaaSResourceGroup')]",
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {

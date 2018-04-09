@@ -12,10 +12,13 @@
       "type": "string"
     }      
   },
+  "variables": {
+      "CustomerName": "[tolower(parameters('CustomerName'))]"
+  },
   "resources": [
     {
       "type": "Microsoft.Network/dnszones/CNAME",
-      "name": "[concat(parameters('DNSZoneName'), '/', parameters('CustomerName'))]",
+      "name": "[concat(parameters('DNSZoneName'), '/', variables('CustomerName'))]",
       "apiVersion": "2016-04-01",
       "location": "[resourceGroup().location]",
       "dependsOn": [],
