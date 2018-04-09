@@ -11,7 +11,7 @@
                 "description": "The customer name. Only A to Z characters and numbers are valid."
             }
         },
-        "SaaSResourceGroup": {
+        "SaasResourceGroup": {
             "type": "string",
             "defaultValue": "SignUp-SAAS-Services",
             "metadata": {
@@ -22,11 +22,7 @@
             "type": "string",
             "allowedValues": ["Free", "Shared", "Basic", "Standard"],
             "defaultValue": "Free"
-        },
-        "AppServicePlan": {
-            "type": "string",
-            "defaultValue": "uniqueString(parameters('CustomerName')))"
-        }       
+        }      
     },
     "variables": {
         "StorageAccountType": "Standard_LRS",
@@ -34,7 +30,9 @@
         "ReplaceName": "[replace(variables('TrimName'),' ', '')]",
         "ConcatName": "[concat(variables('ReplaceName'), uniqueString(parameters('CustomerName')))]",
         "CustomerName": "[substring(variables('ConcatName'), 0, 19)]",
-        "ResourceGroup": "[resourceGroup().name]"
+        "ResourceGroup": "[resourceGroup().name]",
+        "AppServicePlanName": "uniqueString((variables('ResourceGroup')))",
+        "AppServicePlan": "[substring(variables('AppServicePlanName'), 0, 19)]"
     },
     "resources": [
         {
@@ -52,7 +50,8 @@
                 "parameters": {
                     "CustomerName": { "value": "[variables('CustomerName')]" },
                     "StorageAccountType": { "value": "[variables('StorageAccountType')]" },
-                    "Tag": { "value": "[variables('TrimName')]" }
+                    "Tag": { "value": "[variables('TrimName')]" },
+                    "AppServicePlan": { "value": "[variables('AppServicePlan')]" }
                 }
             }
         },

@@ -10,6 +10,9 @@
       },
       "Tag": {
         "type": "string"
+      },
+      "AppServicePlan": {
+        "type": "string"
       } 
     },
     "variables": {
@@ -39,7 +42,7 @@
       },
       {
         "apiVersion": "2015-08-01",
-        "name": "signupxfwprodrga813",
+        "name": "[parameters('AppServicePlan')]",
         "type": "Microsoft.Web/serverfarms",
         "location": "[resourceGroup().location]"
       },
@@ -48,9 +51,9 @@
         "name": "[tolower(parameters('CustomerName'))]",
         "type": "Microsoft.Web/sites",
         "location": "[resourceGroup().location]",
-        "dependsOn": [ "signupxfwprodrga813" ],
+        "dependsOn": [ "[parameters('AppServicePlan')]" ],
         "properties": {
-          "serverFarmId": "signupxfwprodrga813"
+          "serverFarmId": "[parameters('AppServicePlan')]"
         }
       }      
     ]
