@@ -7,7 +7,7 @@
     } 
   },
   "variables": {
-    "DNSZoneName": "signupsaasservices.dev.addlevel.net"
+    "DNSZoneName": "dev.addlevel.net"
   },
   "resources": [
     {
