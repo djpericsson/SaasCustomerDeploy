@@ -31,8 +31,10 @@
         "ConcatName": "[concat(variables('ReplaceName'), uniqueString(parameters('CustomerName')))]",
         "CustomerName": "[substring(variables('ConcatName'), 0, 19)]",
         "ResourceGroup": "[resourceGroup().name]",
-        "AppServicePlanName": "uniqueString(variables('ResourceGroup'))",
-        "AppServicePlan": "[substring(variables('AppServicePlanName'), 0, 19)]"
+        "TolowerResourceGroup": "[tolower(variables('ResourceGroup'))]",
+        "ReplaceDashResourceGroup": "[replace(variables('TolowerResourceGroup'),'-', '')]",
+        "ConcatResourceGroup": "[concat(variables('ReplaceDashResourceGroup'), uniqueString(variables('ReplaceDashResourceGroup')))]",
+        "AppServicePlan": "[substring(variables('ConcatResourceGroup'), 0, 19)]"
     },
     "resources": [
         {
