@@ -42,7 +42,8 @@
                 },
                 "parameters": {
                     "CustomerName": { "value": "[variables('CustomerName')]" },
-                    "StorageAccountType": { "value": "[variables('StorageAccountType')]" }
+                    "StorageAccountType": { "value": "[variables('StorageAccountType')]" },
+                    "Tag": { "value": "[variables('TrimName')]" }
                 }
             }
         },
