@@ -1,55 +1,61 @@
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "CustomerName": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 24,
-      "defaultValue": "",
-      "metadata": {
-        "description": "The customer name. Only A to Z characters and numbers are valid."
-      }
-    }  
-  },
-  "variables": {
-    "StorageAccountType": "Standard_LRS",
-    "TrimName": "[trim(parameters('CustomerName'))]",
-    "ConcatName": "[concat(variables('TrimName'), uniqueString(resourceGroup().id))]",
-    "CustomerName": "[substring(variables('ConcatName'), 0, 19)]"
-  },   
-  "resources": [
-    {
-      "name": "[tolower(variables('CustomerName'))]",
-      "type": "Microsoft.Storage/storageAccounts",
-      "location": "[resourceGroup().location]",
-      "apiVersion": "2016-01-01",
-      "sku": {
-        "name": "[variables('StorageAccountType')]"
-      },
-      "dependsOn": [],
-      "tags": {
-        "displayName": "StorageAccount",
-        "Customer": "[variables('CustomerName')]",
-        "Solution": "Exflow"
-      },
-      "kind": "Storage"
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "CustomerName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 24,
+            "defaultValue": "",
+            "metadata": {
+                "description": "The customer name. Only A to Z characters and numbers are valid."
+            }
+        }
     },
-    { 
-      "apiVersion": "2017-05-10", 
-      "name": "nestedTemplate", 
-      "type": "Microsoft.Resources/deployments",
-      "resourceGroup": "SignUp-SAAS-Services",
-      "properties": { 
-        "mode": "Incremental", 
-        "templateLink": {
-           "uri":"https://raw.githubusercontent.com/djpericsson/SaasCustomerDeploy/master/dnsRecordSet.json",
-           "contentVersion":"1.0.0.0"
-        }, 
-        "parameters": { 
-           "CustomerName":{"value": "[variables('CustomerName')]"}
-        } 
-      } 
-   }
-  ]
+    "variables": {
+        "StorageAccountType": "Standard_LRS",
+        "TrimName": "[trim(parameters('CustomerName'))]",
+        "ConcatName": "[concat(variables('TrimName'), uniqueString(resourceGroup().id))]",
+        "CustomerName": "[substring(variables('ConcatName'), 0, 19)]"
+    },
+    "resources": [
+        {
+            "name": "[tolower(variables('CustomerName'))]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "location": "[resourceGroup().location]",
+            "apiVersion": "2016-01-01",
+            "sku": {
+                "name": "[variables('StorageAccountType')]"
+            },
+            "dependsOn": [],
+            "tags": {
+                "displayName": "StorageAccount",
+                "Customer": "[variables('CustomerName')]",
+                "Solution": "Exflow"
+            },
+            "kind": "Storage"
+        },
+        {
+            "apiVersion": "2017-05-10",
+            "name": "nestedTemplate",
+            "type": "Microsoft.Resources/deployments",
+            "resourceGroup": "SignUp-SAAS-Services",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "https://raw.githubusercontent.com/djpericsson/SaasCustomerDeploy/master/dnsRecordSet.json",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "CustomerName": { "value": "[variables('CustomerName')]" }
+                }
+            }
+        }
+    ],
+    "outputs": {
+        "return": {
+            "type": "string",
+            "value": "[trim(parameters('CustomerName'))]"
+        }
+    }
 }
