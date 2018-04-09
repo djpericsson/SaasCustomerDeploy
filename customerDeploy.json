@@ -28,6 +28,22 @@
             "Solution": "Exflow Cloud"
         },
         "kind": "Storage"
-      }
+      },
+      {
+        "apiVersion": "2015-08-01",
+        "name": "signupxfwprodrga813",
+        "type": "Microsoft.Web/serverfarms",
+        "location": "[resourceGroup().location]"
+      },
+      {
+        "apiVersion": "2015-08-01",
+        "name": "[tolower(parameters('CustomerName'))]",
+        "type": "Microsoft.Web/sites",
+        "location": "[resourceGroup().location]",
+        "dependsOn": [ "signupxfwprodrga813" ],
+        "properties": {
+          "serverFarmId": "signupxfwprodrga813"
+        }
+      }      
     ]
   }
