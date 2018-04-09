@@ -13,7 +13,10 @@
         },
         "ResourceGroup": {
           "type": "string",
-          "defaultValue": "SignUp-SAAS-Services"
+          "defaultValue": "SignUp-SAAS-Services",
+          "metadata": {
+            "description": "The Saas Service Resource Group name."
+        }          
       },        
     },
     "variables": {
@@ -44,7 +47,7 @@
             "apiVersion": "2017-05-10",
             "name": "nestedTemplate",
             "type": "Microsoft.Resources/deployments",
-            "resourceGroup": "SignUp-SAAS-Services",
+            "resourceGroup": "[parameters('ResourceGroup')]",
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
@@ -52,7 +55,9 @@
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
-                    "CustomerName": { "value": "[variables('ReplaceName')]" }
+                    "Name": { "value": "[variables('CustomerName')]" },
+                    "Cname": { "value": "[variables('ReplaceName')]" },
+                    "Zone": { "value": "dev.addlevel.net" }
                 }
             }
         }
