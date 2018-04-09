@@ -18,13 +18,6 @@
                 "description": "The Saas Service Resource Group name."
             }
         }
-        // "ResourceGroup": {
-        //     "type": "string",
-        //     "defaultValue": "SignUp-xfw-prod-rg",
-        //     "metadata": {
-        //         "description": "The Customer Resource Group name."
-        //     }
-        // }
     },
     "variables": {
         "StorageAccountType": "Standard_LRS",
