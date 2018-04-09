@@ -16,14 +16,14 @@
           "defaultValue": "SignUp-SAAS-Services",
           "metadata": {
             "description": "The Saas Service Resource Group name."
-        }          
-      },        
+        }                 
+      }       
     },
     "variables": {
         "StorageAccountType": "Standard_LRS",
         "TrimName": "[trim(parameters('CustomerName'))]",
         "ReplaceName": "[replace(variables('TrimName'),' ', '')]",
-        "ConcatName": "[concat(variables('ReplaceName'), uniqueString(resourceGroup().id))]",
+        "ConcatName": "[concat(variables('ReplaceName'), uniqueString(parameters('CustomerName')))]",
         "CustomerName": "[substring(variables('ConcatName'), 0, 19)]"
     },
     "resources": [
@@ -55,9 +55,9 @@
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
-                    "Name": { "value": "[variables('CustomerName')]" },
-                    "Cname": { "value": "[variables('ReplaceName')]" },
-                    "Zone": { "value": "dev.addlevel.net" }
+                    "CustomerName": { "value": "[variables('ReplaceName')]" },
+                    "CNAME": { "value": "[variables('CustomerName')]" },
+                    "DNSZoneName": { "value": "dev.addlevel.net" }
                 }
             }
         }

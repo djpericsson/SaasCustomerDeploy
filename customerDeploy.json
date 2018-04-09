@@ -1,0 +1,30 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "CustomerName": {
+        "type": "string"
+      },
+      "StorageAccountType": {
+        "type": "string"
+      }  
+    },
+    "resources": [
+      {
+        "name": "[tolower(parameters('CustomerName'))]",
+        "type": "Microsoft.Storage/storageAccounts",
+        "location": "[resourceGroup().location]",
+        "apiVersion": "2016-01-01",
+        "sku": {
+            "name": "[parameters('StorageAccountType')]"
+        },
+        "dependsOn": [],
+        "tags": {
+            "displayName": "StorageAccount",
+            "Customer": "[parameters('CustomerName')]",
+            "Solution": "Exflow"
+        },
+        "kind": "Storage"
+      }
+    ]
+  }

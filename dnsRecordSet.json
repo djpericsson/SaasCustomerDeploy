@@ -2,20 +2,20 @@
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "Name": {
+    "CustomerName": {
       "type": "string"
     },
-    "Cname": {
+    "CNAME": {
       "type": "string"
     },
-    "Zone": {
+    "DNSZoneName": {
       "type": "string"
     }      
   },
   "resources": [
     {
       "type": "Microsoft.Network/dnszones/CNAME",
-      "name": "[concat(parameters('Zone'), '/', parameters('Name'))]",
+      "name": "[concat(parameters('DNSZoneName'), '/', parameters('CustomerName'))]",
       "apiVersion": "2016-04-01",
       "location": "[resourceGroup().location]",
       "dependsOn": [],
@@ -25,7 +25,7 @@
       "properties": {
         "TTL": 3600,
         "CNAMERecord": {
-          "cname": "[concat(parameters('Cname'), '.azurewebsites.net')]"
+          "cname": "[concat(parameters('CNAME'), '.azurewebsites.net')]"
         }
       }
     }
