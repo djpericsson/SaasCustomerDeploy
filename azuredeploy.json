@@ -31,7 +31,7 @@
         "ConcatName": "[concat(variables('ReplaceName'), uniqueString(parameters('CustomerName')))]",
         "CustomerName": "[substring(variables('ConcatName'), 0, 19)]",
         "ResourceGroup": "[resourceGroup().name]",
-        "AppServicePlanName": "[uniqueString(variables('ResourceGroup'))]",
+        "AppServicePlanName": "uniqueString(variables('ResourceGroup'))",
         "AppServicePlan": "[substring(variables('AppServicePlanName'), 0, 19)]"
     },
     "resources": [
