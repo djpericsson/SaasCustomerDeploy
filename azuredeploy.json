@@ -18,11 +18,17 @@
                 "description": "The Saas Service Resource Group name."
             }
         },
-        "sku": {
+        "AppServicePlan": {
             "type": "string",
-            "allowedValues": ["Free", "Shared", "Basic", "Standard"],
-            "defaultValue": "Free"
-        }      
+            "minLength": 1,
+            "maxLength": 24,
+            "defaultValue": "signupxfwprodrgtfuf"
+        }
+        // "Sku": {
+        //     "type": "string",
+        //     "allowedValues": ["Free", "Shared", "Basic", "Standard"],
+        //     "defaultValue": "Free"
+        // }      
     },
     "variables": {
         "StorageAccountType": "Standard_LRS",
@@ -30,11 +36,7 @@
         "ReplaceName": "[replace(variables('TrimName'),' ', '')]",
         "ConcatName": "[concat(variables('ReplaceName'), uniqueString(parameters('CustomerName')))]",
         "CustomerName": "[substring(variables('ConcatName'), 0, 19)]",
-        "ResourceGroup": "[resourceGroup().name]",
-        "TolowerResourceGroup": "[tolower(variables('ResourceGroup'))]",
-        "ReplaceDashResourceGroup": "[replace(variables('TolowerResourceGroup'),'-', '')]",
-        "ConcatResourceGroup": "[concat(variables('ReplaceDashResourceGroup'), uniqueString(variables('ReplaceDashResourceGroup')))]",
-        "AppServicePlan": "[substring(variables('ConcatResourceGroup'), 0, 19)]"
+        "ResourceGroup": "[resourceGroup().name]"
     },
     "resources": [
         {
@@ -53,7 +55,7 @@
                     "CustomerName": { "value": "[variables('CustomerName')]" },
                     "StorageAccountType": { "value": "[variables('StorageAccountType')]" },
                     "Tag": { "value": "[variables('TrimName')]" },
-                    "AppServicePlan": { "value": "[variables('AppServicePlan')]" }
+                    "AppServicePlan": { "value": "[parameters('AppServicePlan')]" }
                 }
             }
         },
