@@ -16,7 +16,10 @@
             "defaultValue": "SignUp-SAAS-Services",
             "metadata": {
                 "description": "The Saas Service Resource Group name."
-            }
+            },
+            "allowedValues": [
+                "SignUp-SAAS-Services"
+            ]
         },
         "AppServicePlan": {
             "type": "string",
