@@ -29,14 +29,7 @@
         "location": "[resourceGroup().location]",
         "apiVersion": "2016-01-01",       
         "sku": {
-            "name": "[parameters('StorageAccountType')]",
-            "cors": {
-              "allowedHeaders": [ "*" ],
-              "allowedMethods": [ "get", "post", "put" ],
-              "allowedOrigins": [ "*" ],
-              "exposedHeaders": [ "*" ],
-              "maximumAge": 5
-            }            
+            "name": "[parameters('StorageAccountType')]"   
         },
         "properties": {
           "accountType": "[parameters('StorageAccountType')]",
