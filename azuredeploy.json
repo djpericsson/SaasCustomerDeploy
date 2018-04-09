@@ -24,11 +24,6 @@
             "maxLength": 24,
             "defaultValue": "signupxfwprodrgtfuf"
         }
-        // "Sku": {
-        //     "type": "string",
-        //     "allowedValues": ["Free", "Shared", "Basic", "Standard"],
-        //     "defaultValue": "Free"
-        // }      
     },
     "variables": {
         "StorageAccountType": "Standard_LRS",
