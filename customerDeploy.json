@@ -20,8 +20,7 @@
         "CustomerName": "[replace(variables('ReplaceName'),'-', '')]",
         "Rg": "[resourceGroup().name]",
         "rRgSpace": "[replace(variables('Rg'),' ', '')]",
-        "rRgDash": "[replace(variables('rRgSpace'),'-', '')]",
-        "AppServicePlanName": "[tolower(variables('rRgDash'))]"
+        "rRgDash": "[replace(variables('rRgSpace'),'-', '')]"
     },
     "resources": [
       {
