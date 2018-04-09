@@ -13,7 +13,9 @@
     }  
   },
   "variables": {
-    "StorageAccountType": "Standard_LRS"
+    "StorageAccountType": "Standard_LRS",
+    "VariableName": "[concat(parameters('CustomerName'), uniqueString(resourceGroup().id))]",
+    "CustomerName": "[substring(variables('VariableName'), 0, 19)]"
   },   
   "resources": [
     {
@@ -27,7 +29,7 @@
       "dependsOn": [],
       "tags": {
         "displayName": "StorageAccount",
-        "Customer": "[parameters('CustomerName')]",
+        "Customer": "[variables('CustomerName')]",
         "Solution": "Exflow"
       },
       "kind": "Storage"
@@ -44,7 +46,7 @@
            "contentVersion":"1.0.0.0"
         }, 
         "parameters": { 
-           "CustomerName":{"value": "[parameters('CustomerName')]"}
+           "CustomerName":{"value": "[variables('CustomerName')]"}
         } 
       } 
    }
