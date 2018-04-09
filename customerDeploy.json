@@ -56,6 +56,18 @@
           "siteConfig": {
             "appSettings": [
               {
+                "name": "ApplicationInsightsInstrumentationKey",
+                "value": "72d119d9-a1cc-4eb1-b669-7af55d540c0d"
+              },
+              {
+                "name": "Startup.DeploymentName",
+                "value": "[tolower(parameters('CustomerName'))]"
+              },
+              {
+                "name": "Startup.KeyVaultCredentialConnectionString",
+                "value": "RunAs=App; TenantId=dedd0f01-f944-4b39-a6a8-3a46f9ed225a; AppId=f3a53516-b366-401f-a211-b987b645e3eb; AppKey=12345"
+              },
+              {
                 "name": "offline_",
                 "value": "85.24.197.82"
               }
