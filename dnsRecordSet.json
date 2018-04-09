@@ -13,7 +13,8 @@
     }      
   },
   "variables": {
-      "CustomerName": "[tolower(parameters('CustomerName'))]"
+      "CustomerName": "[tolower(parameters('CustomerName'))]",
+      "CNAME": "[tolower(parameters('CNAME'))]"
   },
   "resources": [
     {
@@ -28,7 +29,7 @@
       "properties": {
         "TTL": 3600,
         "CNAMERecord": {
-          "cname": "[concat(parameters('CNAME'), '.azurewebsites.net')]"
+          "cname": "[concat(variables('CNAME'), '.azurewebsites.net')]"
         }
       }
     }
