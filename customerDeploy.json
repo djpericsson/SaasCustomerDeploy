@@ -62,7 +62,7 @@
                     "appSettings": [
                         {
                             "name": "ApplicationInsightsInstrumentationKey",
-                            "value": "72d119d9-a1cc-4eb1-b669-7af55d540c0d"
+                            "value": "1234"
                         },
                         {
                             "name": "Startup.DeploymentName",
@@ -71,11 +71,11 @@
                         {
                             "name": "Startup.KeyVaultCredentialConnectionString",
                             "value":
-                                "RunAs=App; TenantId=dedd0f01-f944-4b39-a6a8-3a46f9ed225a; AppId=f3a53516-b366-401f-a211-b987b645e3eb; AppKey=12345"
+                                "RunAs=App; TenantId=1234; AppId=1234; AppKey=1234"
                         },
                         {
                             "name": "offline_",
-                            "value": "85.24.197.82"
+                            "value": "10.0.0.1"
                         }
                     ]
                 }
