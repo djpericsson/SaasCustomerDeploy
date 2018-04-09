@@ -25,7 +25,7 @@
         "ReplaceName": "[replace(variables('TrimName'),' ', '')]",
         "ConcatName": "[concat(variables('ReplaceName'), uniqueString(parameters('CustomerName')))]",
         "CustomerName": "[substring(variables('ConcatName'), 0, 19)]",
-        "ResourceGroup": "[resourceGroup().id.name]"
+        "ResourceGroup": "[resourceGroup().name]"
     },
     "resources": [
         {
