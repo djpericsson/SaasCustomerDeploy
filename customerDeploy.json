@@ -38,8 +38,10 @@
                 "Solution": "Exflow Cloud"
             },
             "properties": {
-              "cors": {"allowedOrigins": ["*"]}
-            },            
+                "cors": {
+                    "allowedOrigins": ["http://signup.exflow.debug','https://signup.exflow.cloud"]
+                }
+            },
             "kind": "Storage"
         },
         {
