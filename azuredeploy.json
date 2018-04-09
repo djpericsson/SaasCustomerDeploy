@@ -30,8 +30,10 @@
     },
     "variables": {
         "StorageAccountType": "Standard_LRS",
-        "CustomerName": "[substring(concat(replace(trim(parameters('CustomerName')),' ', ''), uniqueString(parameters('CustomerName'))), 0, 19)]",
-        "ResourceGroup": "[resourceGroup().name]"
+        // "CustomerName": "[substring(concat(replace(trim(parameters('CustomerName')),' ', ''), uniqueString(parameters('CustomerName'))), 0, 19)]",
+        "ResourceGroup": "[resourceGroup().name]",
+        "NameLength": "[less(parameters(substring(concat(replace(trim(parameters('CustomerName')),' ', ''), uniqueString(parameters('CustomerName'))), 0, 19)), '19' )]",
+        "availabilitySet": "[if(equals(variables('NameLength'), 'Yes'), concat(replace(trim(parameters('CustomerName')),' ', ''), uniqueString(parameters('CustomerName'))), substring(concat(replace(trim(parameters('CustomerName')),' ', ''), uniqueString(parameters('CustomerName'))), 0, 19))]"
     },
     "resources": [
         {
@@ -47,7 +49,7 @@
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
-                    "CustomerName": { "value": "[variables('CustomerName')]" },
+                    "CustomerName": { "value": "[variables('availabilitySet')]" },
                     "StorageAccountType": { "value": "[variables('StorageAccountType')]" },
                     "Tag": { "value": "[trim(parameters('CustomerName'))]" },
                     "AppServicePlan": { "value": "[parameters('AppServicePlan')]" }
@@ -67,7 +69,7 @@
                 },
                 "parameters": {
                     "CustomerName": { "value": "[replace(trim(parameters('CustomerName')),' ', '')]" },
-                    "CNAME": { "value": "[variables('CustomerName')]" },
+                    "CNAME": { "value": "[variables('availabilitySet')]" },
                     "DNSZoneName": { "value": "dev.addlevel.net" }
                 }
             }
